@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>도배탐구생활 | 구미 도배 전문 시공</title>
+<meta name="description" content="구미·경북 지역 도배 전문. 견적 준 사람이 직접 시공합니다. 무몰딩 라운드 코너, 아치 구조, 디아망 포티스·신한 월가드 등 프리미엄 벽지 시공.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<style>
+  :root{
+    --paper: #EFEAE1;
+    --paper-deep: #E4DCCB;
+    --ink: #2A2621;
+    --ink-soft: #5B5347;
+    --brass: #93713F;
+    --brass-deep: #6E5530;
+    --slate: #3C4A47;
+    --line: rgba(42,38,33,0.14);
+    --scrim: rgba(18,16,13,0.58);
+    --radius: 2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Pretendard', -apple-system, sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Gowun Batang', serif;
+    font-weight:700;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* seam divider — signature element: mimics a wallpaper panel seam */
+  .seam{
+    position:relative;
+    height:34px;
+    margin:0 auto;
+    width:100%;
+    max-width:1100px;
+  }
+  .seam::before, .seam::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    width:42%;
+    height:1px;
+    background:var(--line);
+  }
+  .seam::before{left:0;}
+  .seam::after{right:0;}
+  .seam span{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:5px;height:5px;
+    border-radius:50%;
+    background:var(--brass);
+  }
+
+  /* nav */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(239,234,225,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+    max-width:1100px;margin:0 auto;
+  }
+  .wordmark{
+    display:flex; align-items:center; gap:9px;
+    font-family:'Gowun Batang', serif;
+    font-size:18px; font-weight:700;
+  }
+  .wordmark .mark{
+    display:inline-block; width:3px; height:20px;
+    background:var(--brass);
+  }
+  .nav-cta{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:13px; letter-spacing:0.02em;
+    border:1px solid var(--ink); padding:9px 18px;
+    border-radius:var(--radius);
+    transition:all .2s ease;
+  }
+  .nav-cta:hover{background:var(--ink); color:var(--paper);}
+
+  /* hero */
+  .hero{
+    position:relative;
+    min-height:88vh;
+    display:flex; align-items:flex-end;
+    background:#111 center/cover no-repeat;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(18,16,13,0.15) 0%, var(--scrim) 78%, rgba(18,16,13,0.75) 100%);
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    width:100%;
+    padding:0 24px 64px;
+    max-width:1100px; margin:0 auto;
+    color:#F4EFE4;
+  }
+  .eyebrow{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
+    color:#D8CBAE; margin-bottom:18px; display:block;
+  }
+  .hero h1{
+    font-size:clamp(30px, 5vw, 52px);
+    line-height:1.28;
+    max-width:820px;
+    color:#F8F3E8;
+  }
+  .hero p{
+    margin-top:20px;
+    font-size:16px;
+    color:#E4DCC9;
+    max-width:520px;
+  }
+  .cta-row{
+    display:flex; gap:12px; margin-top:32px; flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'Pretendard', sans-serif;
+    font-weight:600; font-size:15px;
+    padding:14px 26px;
+    border-radius:var(--radius);
+    display:inline-block;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary{background:var(--brass); color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 8px 20px rgba(147,113,63,0.35);}
+  .btn-ghost{border:1px solid rgba(244,239,228,0.55); color:#F4EFE4;}
+  .btn-ghost:hover{background:rgba(244,239,228,0.12);}
+
+  section{padding:88px 0;}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head .eyebrow{color:var(--brass-deep);}
+  .section-head h2{font-size:clamp(24px,3.4vw,34px); color:var(--ink);}
+  .section-head p{color:var(--ink-soft); margin-top:14px; font-size:15.5px;}
+
+  /* about */
+  .about{background:var(--paper-deep);}
+  .about-grid{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;
+  }
+  .about-photo{position:relative;}
+  .about-photo img{width:100%; height:460px; object-fit:cover; border-radius:var(--radius);}
+  .about-tag{
+    position:absolute; left:-18px; bottom:-18px;
+    background:var(--ink); color:var(--paper);
+    padding:14px 20px; font-size:13.5px;
+    font-family:'Space Grotesk', sans-serif;
+    max-width:210px; line-height:1.5;
+  }
+  .about-text h3{font-size:22px; margin-bottom:16px;}
+  .about-text p{color:var(--ink-soft); font-size:15.5px; margin:0 0 14px;}
+  .principle-list{list-style:none; padding:0; margin:26px 0 0; display:grid; gap:14px;}
+  .principle-list li{
+    display:flex; gap:12px; align-items:flex-start;
+    font-size:15px; color:var(--ink);
+  }
+  .principle-list li::before{
+    content:""; flex:none; width:6px; height:6px; margin-top:8px;
+    background:var(--brass); border-radius:50%;
+  }
+
+  /* process */
+  .process-grid{
+    display:grid; grid-template-columns:1.4fr 1fr; gap:0;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .process-imgs{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:18px;}
+  .process-imgs img{width:100%; height:220px; object-fit:cover; margin-bottom:0; border-radius:var(--radius);}
+  .process-step{
+    padding:32px 26px; border-right:1px solid var(--line);
+    position:relative;
+  }
+  .process-step:last-child{border-right:none;}
+  .process-num{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:12px; color:var(--brass-deep); letter-spacing:0.12em;
+    margin-bottom:14px; display:block;
+  }
+  .process-step img{
+    width:100%; height:220px; object-fit:cover; margin-bottom:18px; border-radius:var(--radius);
+  }
+  .process-step h4{font-family:'Gowun Batang',serif; font-size:18px; margin-bottom:8px;}
+  .process-step p{font-size:14px; color:var(--ink-soft); margin:0;}
+
+  /* gallery */
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:4px;
+  }
+  .gallery-item{position:relative; overflow:hidden; aspect-ratio:3/4;}
+  .gallery-item img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .gallery-item:hover img{transform:scale(1.06);}
+  .gallery-cap{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:14px 12px 12px;
+    background:linear-gradient(0deg, rgba(15,13,11,0.78), transparent);
+    color:#F4EFE4; font-size:12.5px; letter-spacing:0.01em;
+  }
+
+  /* case study */
+  .case-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:4px; margin-bottom:28px;
+  }
+  .case-item{aspect-ratio:3/4; overflow:hidden;}
+  .case-item img{width:100%; height:100%; object-fit:cover;}
+  .case-spec{
+    display:grid; grid-template-columns:auto 1fr; gap:8px 20px;
+    max-width:520px; padding-top:20px; border-top:1px solid var(--line);
+    font-size:14.5px;
+  }
+  .case-spec span:nth-child(odd){color:var(--ink-soft);}
+  .case-spec span:nth-child(even){color:var(--ink); font-weight:600;}
+
+  /* services */
+  .services{background:var(--paper-deep);}
+  .services-grid{display:grid; grid-template-columns:1fr; max-width:520px;}
+  .service-block h3{
+    font-size:16px; font-family:'Pretendard',sans-serif; font-weight:700;
+    padding-bottom:12px; border-bottom:1px solid var(--line); margin-bottom:16px;
+  }
+  .service-block ul{list-style:none; margin:0 0 40px; padding:0;}
+  .service-block li{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:11px 0; border-bottom:1px dashed var(--line);
+    font-size:15px; color:var(--ink);
+  }
+  .service-block li span.tag{
+    font-family:'Space Grotesk',sans-serif; font-size:11px;
+    color:var(--brass-deep); letter-spacing:0.06em;
+  }
+
+  /* reviews */
+  .reviews-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:24px;
+  }
+  .review-card{
+    background:rgba(147,113,63,0.06); border:1px solid var(--line);
+    border-radius:var(--radius); padding:28px 26px;
+  }
+  .review-stars{color:#C7A56B; font-size:15px; margin-bottom:12px; letter-spacing:2px;}
+  .review-card p{font-size:14.5px; line-height:1.7; color:var(--ink-soft); margin:0;}
+
+  .brands{
+    text-align:center; padding:56px 24px;
+    font-family:'Gowun Batang', serif; font-size:20px; color:var(--ink-soft);
+  }
+  .brands b{color:var(--ink); font-weight:700;}
+
+  /* contact */
+  .contact{background:var(--ink); color:var(--paper);}
+  .contact .section-head p{color:#C9C0AC;}
+  .contact .section-head .eyebrow{color:#C7A56B;}
+  .contact-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px;}
+  .contact-links{display:grid; gap:10px;}
+  .contact-links a{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 20px; border:1px solid rgba(244,239,228,0.18);
+    border-radius:var(--radius); font-size:15px;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .contact-links a:hover{border-color:var(--brass); background:rgba(147,113,63,0.12);}
+  .contact-links a span.arrow{font-family:'Space Grotesk',sans-serif; color:#C7A56B;}
+  .partner-note{
+    border-left:2px solid var(--brass);
+    padding:6px 0 6px 18px; font-size:14px; color:#C9C0AC; margin-top:28px;
+  }
+  footer{
+    text-align:center; padding:26px 24px; font-size:12.5px;
+    color:#7c7565; background:var(--ink);
+    border-top:1px solid rgba(244,239,228,0.1);
+  }
+
+  @media (max-width:820px){
+    .about-grid, .contact-grid, .services-grid{grid-template-columns:1fr; gap:32px;}
+    .about-photo img{height:320px;}
+    .about-tag{position:static; margin-top:14px; max-width:none;}
+    .process-grid{grid-template-columns:1fr;}
+    .process-step{border-right:none; border-bottom:1px solid var(--line);}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .case-grid{grid-template-columns:repeat(2,1fr);}
+    .case-spec{grid-template-columns:1fr;}
+    .reviews-grid{grid-template-columns:1fr;}
+    section{padding:60px 0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .gallery-item img{transition:none;}
+  }
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="wordmark"><span class="mark"></span>도배탐구생활</div>
+    <a class="nav-cta" href="#contact">문의하기</a>
+  </div>
+</header>
+
+<section class="hero" style="background-image:url('images/hero.jpg');">
+  <div class="hero-inner">
+    <span class="eyebrow">GUMI · WALLPAPER &amp; LIGHTING</span>
+    <h1>견적 준 사람이,<br>직접 옵니다.</h1>
+    <p>구미·경북 지역 도배 전문 도배탐구생활입니다. 상담부터 시공, A/S까지 하도급 없이 도배탐구생활이 직접 책임집니다.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contact">전화 상담하기</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/dobae_tamgu" target="_blank" rel="noopener">인스타그램 시공사례</a>
+    </div>
+  </div>
+</section>
+
+<div class="seam"><span></span></div>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div class="reveal about-photo">
+      <img src="images/about-worker.jpg" alt="직접 시공 중인 도배탐구생활">
+      <div class="about-tag">상담을 받은 사람이<br>현장에도 그대로 옵니다</div>
+    </div>
+    <div class="reveal about-text">
+      <span class="eyebrow" style="color:var(--brass-deep);">ABOUT</span>
+      <h3>구미에서, 도배만 10년째 파고드는 이유</h3>
+      <p>도배탐구생활은 견적, 시공, A/S까지 전 과정을 직접 진행하는 도배 전문 브랜드입니다. 필름·마루 등 다른 공정이 필요할 땐 신뢰하는 파트너와 함께 조율해드립니다.</p>
+      <ul class="principle-list">
+        <li>하도급 없이 견적자 = 시공자 = A/S 담당자</li>
+        <li>무몰딩 라운드 코너, 아치 구조 등 디테일 시공 전문</li>
+        <li>디아망 포티스·신한 월가드·개나리 세이프가드 등 프리미엄 벽지 정식 취급</li>
+        <li>아파트부터 상가·사무실까지 도배 전문 시공</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">PROCESS</span>
+      <h2>바탕 정리부터 마감까지, 눈에 보이지 않는 곳까지</h2>
+      <p>도배는 벽지보다 바탕 작업이 결과를 가릅니다. 콘크리트 면 정리부터 코너 디테일까지, 실제 현장 과정을 그대로 보여드립니다.</p>
+    </div>
+  </div>
+  <div class="wrap process-grid reveal">
+    <div class="process-step">
+      <span class="process-num">01 — 바탕 정리</span>
+      <div class="process-imgs">
+        <img src="images/process-1-before.jpg" alt="벽면 평탄화 및 퍼티 작업">
+        <img src="images/process-2-during.jpg" alt="면 평탄화 퍼티 시공">
+      </div>
+      <h4>면 평탄화 · 퍼티 &amp; 초배</h4>
+      <p>콘크리트 면의 요철과 이음을 퍼티로 평탄하게 잡고 초배로 바탕을 만듭니다. 이 작업이 마감의 완성도를 가릅니다.</p>
+    </div>
+    <div class="process-step">
+      <span class="process-num">02 — 완성</span>
+      <img src="images/process-3-after.jpg" alt="매끈하게 완성된 벽면">
+      <h4>매끈한 면 마감</h4>
+      <p>바탕을 제대로 잡았기에 가능한, 요철 없이 매끈하게 떨어지는 벽면입니다.</p>
+    </div>
+  </div>
+</section>
+
+<div class="seam"><span></span></div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">WORK</span>
+      <h2>실제 시공 사례</h2>
+      <p>무몰딩 라운드 코너, 우물천장, 등박스까지 실제 시공한 디테일 사진입니다.</p>
+    </div>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item"><img src="images/gallery-1.jpg" alt="아웃코너 라운드 무몰딩"><div class="gallery-cap">아웃코너 라운드 무몰딩</div></div>
+    <div class="gallery-item"><img src="images/gallery-2.jpg" alt="인코너 라운드 무몰딩"><div class="gallery-cap">인코너 라운드 무몰딩</div></div>
+    <div class="gallery-item"><img src="images/gallery-3.jpg" alt="우물천장 라운드 무몰딩"><div class="gallery-cap">우물천장 라운드 무몰딩</div></div>
+    <div class="gallery-item"><img src="images/gallery-4.jpg" alt="우물천장 사각 무몰딩"><div class="gallery-cap">우물천장 사각 무몰딩</div></div>
+    <div class="gallery-item"><img src="images/gallery-5.jpg" alt="등박스 무몰딩"><div class="gallery-cap">등박스 무몰딩</div></div>
+    <div class="gallery-item"><img src="images/gallery-6.jpg" alt="무몰딩 반매립 니치"><div class="gallery-cap">무몰딩 반매립 니치</div></div>
+    <div class="gallery-item"><img src="images/gallery-7.jpg" alt="몰딩 제거 후 무몰딩 처리"><div class="gallery-cap">몰딩 제거 후 무몰딩 처리</div></div>
+    <div class="gallery-item"><img src="images/gallery-8.jpg" alt="구평 푸르지오 거실 전경"><div class="gallery-cap">구평 푸르지오 거실 전경</div></div>
+  </div>
+</section>
+
+<div class="seam"><span></span></div>
+
+<section class="case-study">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">CASE STUDY — 구평 푸르지오</span>
+      <h2>구축 아파트도, 벽면부터 다시 잡습니다</h2>
+      <p>오래된 아파트는 벽면 자체가 평평하지 않은 경우가 많습니다. 이 현장은 콘크리트 벽면 평탄화(퍼티) 작업부터 시작해 습식 텍스 초배로 바탕을 잡고, 신한 스케치 15130-6 벽지로 마감했습니다. 새 아파트 못지않게 매끈한 마감이 가능한 이유입니다.</p>
+    </div>
+    <div class="case-grid reveal">
+      <div class="case-item"><img src="images/case2-1.jpg" alt="벽면 퍼티 작업 중"></div>
+      <div class="case-item"><img src="images/case2-2.jpg" alt="구평 푸르지오 벽면 퍼티 그리드 작업"></div>
+      <div class="case-item"><img src="images/case2-3.jpg" alt="구평 푸르지오 습식 텍스 초배 마감"></div>
+      <div class="case-item"><img src="images/case2-4.jpg" alt="구평 푸르지오 도배 마감 완성"></div>
+    </div>
+    <div class="case-spec reveal">
+      <span>바탕 작업</span>
+      <span>벽면 평탄화(퍼티) · 습식 텍스 초배</span>
+      <span>사용 벽지</span>
+      <span>신한 스케치 15130-6</span>
+    </div>
+  </div>
+</section>
+
+<div class="seam"><span></span></div>
+
+<section class="case-study">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">CASE STUDY — 문성 상가</span>
+      <h2>상가·사무실 리모델링도 마감이 다릅니다</h2>
+      <p>문성 상가 리모델링 현장은 아치 구조와 무몰딩 라운드 코너로 마감하고, 신한 파사드 월가드로 상업 공간에 맞는 내구성 있는 마감을 완성했습니다.</p>
+    </div>
+    <div class="case-grid reveal">
+      <div class="case-item"><img src="images/case3-1.jpg" alt="문성 상가 아치 구조"></div>
+      <div class="case-item"><img src="images/case3-2.jpg" alt="문성 상가 창가 코너"></div>
+      <div class="case-item"><img src="images/case3-3.jpg" alt="문성 상가 천장 아치"></div>
+      <div class="case-item"><img src="images/case3-4.jpg" alt="문성 상가 아치 시공 전경"></div>
+      <div class="case-item"><img src="images/case3-5.jpg" alt="문성 상가 아치 코너 디테일"></div>
+      <div class="case-item"><img src="images/case3-6.jpg" alt="문성 상가 창가 마감"></div>
+    </div>
+    <div class="case-spec reveal">
+      <span>구조 시공</span>
+      <span>아치 구조 · 무몰딩 라운드 코너</span>
+      <span>마감재</span>
+      <span>신한 파사드 월가드</span>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">REVIEWS</span>
+      <h2>고객님들이 남겨주신 후기</h2>
+    </div>
+    <div class="reviews-grid reveal">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"집에 홈캠이 있는데 홈캠을 보니 사장님이 매번 작업자 들어올 때 오셔서 저희 없어도 있는 거랑 똑같이 일해주셨어요. 작업 퀄리티도 대박이지만 이렇게 거주중 인테리어라고 바닥 청소해주시고 감독해주시고 감동 받았습니다."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"모르는 것이 많아서 이것저것 많이 여쭤봤는데 눈 앞에 이익 생각없이 불필요한 부분에 대해서는 안 해도 된다, 아직 괜찮다 하셔서 더 신뢰한 것 같아요. 작업현장 사진을 매번 보내주셨고, 시공 끝난 후에도 재차 확인하러 방문해주셔서 만족을 넘어 감동이었어요."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"제가 여기저기 이사를 많이 다녀서 도배도 여러 번 해봤는데, 사장님이 제가 겪어본 분들 중 가장 친절하고 꼼꼼하게 해주셨어요. 벽지 고르는 것도 많이 도와주셨구요. 다음에 누가 도배할 일 있으면 추천할게요."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>"원룸 건물 하나 맡겨 두었는데 아주 깔끔하고 가격도 합리적이라 앞으로 계속 여기 사장님하고만 일 할 것 같습니다. 번창하세요!"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="seam"><span></span></div>
+
+<section class="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">SERVICE</span>
+      <h2>시공 항목</h2>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-block">
+        <h3>벽지 · 도배</h3>
+        <ul>
+          <li>실크벽지 <span class="tag">SILK</span></li>
+          <li>합지벽지 <span class="tag">STANDARD</span></li>
+          <li>디아망 포티스·신한 월가드·개나리 세이프가드 <span class="tag">PREMIUM</span></li>
+          <li>무몰딩 라운드 코너 마감 <span class="tag">DETAIL</span></li>
+          <li>아치 구조 시공 <span class="tag">DETAIL</span></li>
+          <li>상가·사무실 파사드 월가드 마감 <span class="tag">DETAIL</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="brands reveal">
+  <b>디아망 포티스</b> · <b>신한 월가드</b> · <b>개나리 세이프가드</b> 등 프리미엄 벽지 정식 취급
+</div>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">CONTACT</span>
+      <h2>가견적, 편하게 문의 주세요</h2>
+      <p>구미·경북 지역 방문 견적 가능합니다. 사진 몇 장이면 대략적인 견적을 먼저 안내해드려요.</p>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-links">
+        <a href="tel:010-7646-9432">전화 문의 <span class="arrow">→ 010-7646-9432</span></a>
+        <a href="https://www.instagram.com/dobae_tamgu" target="_blank" rel="noopener">Instagram <span class="arrow">@dobae_tamgu</span></a>
+        <a href="https://blog.naver.com/yooninterior102" target="_blank" rel="noopener">네이버 블로그 <span class="arrow">yooninterior102</span></a>
+        <a href="https://map.naver.com/p/entry/place/1079805305?c=15.00,0,0,0,dh&placePath=%2Fhome%3FfromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607061555%26locale%3Dko%26svcName%3Dmap_pcv5" target="_blank" rel="noopener">네이버 플레이스 <span class="arrow">→</span></a>
+      </div>
+      <div>
+        <p style="color:#C9C0AC; font-size:15px; margin:0 0 12px;">윤 장식/인테리어 · 도배탐구생활<br>경북 구미시</p>
+        <div class="partner-note">
+          부동산 · 신규 인테리어 업체 협력 문의도 환영합니다.<br>도배팀이 필요하실 때 편하게 연락 주세요.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 도배탐구생활 · 윤 장식/인테리어</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    revealEls.forEach(el=>io.observe(el));
+  } else {
+    revealEls.forEach(el=>el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
